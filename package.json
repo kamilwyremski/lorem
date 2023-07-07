@@ -2,6 +2,17 @@
   "name": "lorem",
   "version": "0.1.0",
   "private": false,
+  "description": "Generator Lorem Ipsum",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kamilwyremski/lorem"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Kamil Wyremski",
+    "email": "kamil@wyremski.pl",
+    "url": "https://wyremski.pl/en"
+  },
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check build-only",
