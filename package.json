@@ -3,29 +3,25 @@
   "version": "0.1.0",
   "private": false,
   "description": "Generator Lorem Ipsum",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/kamilwyremski/lorem"
-  },
-  "license": "MIT",
   "author": {
     "name": "Kamil Wyremski",
     "email": "kamil@wyremski.pl",
     "url": "https://wyremski.pl/en"
   },
   "scripts": {
-    "dev": "vite",
     "build": "run-p type-check build-only",
-    "preview": "vite preview",
     "test:unit": "vitest",
     "test:e2e": "start-server-and-test preview http://localhost:4173 'cypress run --e2e'",
-    "test:e2e:dev": "start-server-and-test 'vite dev --port 4173' http://localhost:4173 'cypress open --e2e'",
-    "build-only": "vite build",
-    "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
+    "build-only": "vite build",
+    "dev": "vite",
+    "format": "prettier --write src/",
+    "preview": "vite preview",
+    "test:e2e:dev": "start-server-and-test 'vite dev --port 4173' http://localhost:4173 'cypress open --e2e'",
+    "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false"
   },
   "dependencies": {
+    "register-service-worker": "^1.7.1",
     "vue": "^3.3.4"
   },
   "devDependencies": {
@@ -35,6 +31,7 @@
     "@types/node": "^18.16.17",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vitejs/plugin-vue-jsx": "^3.0.1",
+    "@vue/cli-plugin-pwa": "~4.5.13",
     "@vue/eslint-config-prettier": "^7.1.0",
     "@vue/eslint-config-typescript": "^11.0.3",
     "@vue/test-utils": "^2.3.2",
@@ -51,5 +48,10 @@
     "vite": "^4.3.9",
     "vitest": "^0.32.0",
     "vue-tsc": "^1.6.5"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kamilwyremski/lorem"
   }
 }

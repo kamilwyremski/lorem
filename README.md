@@ -1,5 +1,7 @@
 # Generator Lorem Ipsum
 
+Live demo: https://lorem.wyremski.pl/
+
 Git: https://github.com/kamilwyremski/lorem
 
 ## Project Setup
