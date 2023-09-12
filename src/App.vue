@@ -140,7 +140,7 @@ input[type='checkbox'] {
   margin: 0;
   font: inherit;
   color: currentColor;
-  width: 1.15em;
+  width: 1.10em;
   height: 1.15em;
   border: 0.15em solid currentColor;
   border-radius: 0.15em;
