@@ -3,12 +3,18 @@ import lorem from './lorem.json'
 export default {
   data() {
     return {
+      pTag: true,
       numberOfParagraphs: 1,
       output: ''
     }
   },
   mounted() {
     this.getParagraphs()
+  },
+  watch: {
+    pTag() {
+      this.getParagraphs();
+    },
   },
   methods: {
     setNumberOfParagraphs: function (amount: number) {
@@ -18,14 +24,14 @@ export default {
     getParagraphs: function () {
       this.output = lorem
         .slice(0, this.numberOfParagraphs)
-        .map((p) => `<p>${p}</p>`)
+        .map((p) => this.pTag ? `<p>${p}</p>` : p)
         .join('\n')
     },
     randomParagraphs: function () {
       this.output = lorem
         .sort(() => 0.5 - Math.random())
         .slice(0, this.numberOfParagraphs)
-        .map((p) => `<p>${p}</p>`)
+        .map((p) => this.pTag ? `<p>${p}</p>` : p)
         .join('\n')
     },
     copyToClipboard: function () {
@@ -38,17 +44,20 @@ export default {
 <template>
   <main>
     <h1>Lorem ipsum generator</h1>
-    <div class="buttons">
-      <button
-        v-for="i in 9"
-        :key="i"
-        :class="{ active: i == numberOfParagraphs }"
-        @click="setNumberOfParagraphs(i)"
-      >
-        {{ i }} par.
-      </button>
-      <button @click="randomParagraphs()">Random</button>
-      <button @click="copyToClipboard()">Copy to clipboard</button>
+    <div class="buttons_box">
+      <div class="buttons">
+        <button
+          v-for="i in 9"
+          :key="i"
+          :class="{ active: i == numberOfParagraphs }"
+          @click="setNumberOfParagraphs(i)"
+        >
+          {{ i }} par.
+        </button>
+        <button @click="randomParagraphs()">Random</button>
+        <button @click="copyToClipboard()">Copy to clipboard</button>
+      </div>
+      <label><input type="checkbox" v-model="pTag"/>Add Paragraph HTML Tag</label>
     </div>
     <textarea readonly v-model="output"></textarea>
     <p>
@@ -68,11 +77,14 @@ h1 {
   font-weight: 500;
   font-size: 2.6rem;
 }
-.buttons {
+.buttons_box {
   margin: 2rem 0;
+}
+.buttons {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  margin-bottom: 0.5rem;
 }
 button {
   --b: 3px;
@@ -118,5 +130,32 @@ p {
 }
 a {
   color: var(--color-text);
+}
+input[type="checkbox"] {
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
+  display: inline-grid;
+  place-content: center;
+  margin-right: 10px;
+}
+input[type="checkbox"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--color-background);
+  background-color: --color-background;
+}
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
 }
 </style>

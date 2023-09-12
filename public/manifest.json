@@ -1,6 +1,13 @@
 {
-  "name": "Lorem Ipsum",
-  "short_name": "Lorem Ipsum",
+  "lang": "en-US",
+  "name": "Lorem Ipsum generator",
+  "short_name": "Lorem Ipsum generator",
+  "description": "Website to generatate random lorem ipsum",
+  "orientation": "any",
+  "theme_color": "#ebebeb",
+  "background_color": "#000000",
+  "start_url": "/",
+  "display": "standalone",
   "icons": [
     {
       "src": "icons/icon-72x72.png",
@@ -43,9 +50,5 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
-  "theme_color": "#ebebeb",
-  "background_color": "#000000",
-  "start_url": "/",
-  "display": "standalone"
+  ]
 }
