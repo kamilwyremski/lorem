@@ -13,8 +13,8 @@ export default {
   },
   watch: {
     pTag() {
-      this.getParagraphs();
-    },
+      this.getParagraphs()
+    }
   },
   methods: {
     setNumberOfParagraphs: function (amount: number) {
@@ -24,14 +24,14 @@ export default {
     getParagraphs: function () {
       this.output = lorem
         .slice(0, this.numberOfParagraphs)
-        .map((p) => this.pTag ? `<p>${p}</p>` : p)
+        .map((p) => (this.pTag ? `<p>${p}</p>` : p))
         .join('\n')
     },
     randomParagraphs: function () {
       this.output = lorem
         .sort(() => 0.5 - Math.random())
         .slice(0, this.numberOfParagraphs)
-        .map((p) => this.pTag ? `<p>${p}</p>` : p)
+        .map((p) => (this.pTag ? `<p>${p}</p>` : p))
         .join('\n')
     },
     copyToClipboard: function () {
@@ -57,7 +57,7 @@ export default {
         <button @click="randomParagraphs()">Random</button>
         <button @click="copyToClipboard()">Copy to clipboard</button>
       </div>
-      <label><input type="checkbox" v-model="pTag"/>Add Paragraph HTML Tag</label>
+      <label><input type="checkbox" v-model="pTag" />Add Paragraph HTML Tag</label>
     </div>
     <textarea readonly v-model="output"></textarea>
     <p>
@@ -95,7 +95,10 @@ button {
   background: conic-gradient(from 90deg at var(--b) var(--b), #0000 90deg, var(--color-text) 0)
     var(--_p) var(--_p) / calc(100% - var(--b) - 2 * var(--_p))
     calc(100% - var(--b) - 2 * var(--_p));
-  transition: 0.3s linear, color 0s, background-color 0s;
+  transition:
+    0.3s linear,
+    color 0s,
+    background-color 0s;
   outline: var(--b) solid #0000;
   outline-offset: 0.6em;
   font-size: 16px;
@@ -131,7 +134,7 @@ p {
 a {
   color: var(--color-text);
 }
-input[type="checkbox"] {
+input[type='checkbox'] {
   appearance: none;
   background-color: #fff;
   margin: 0;
@@ -146,8 +149,8 @@ input[type="checkbox"] {
   place-content: center;
   margin-right: 10px;
 }
-input[type="checkbox"]::before {
-  content: "";
+input[type='checkbox']::before {
+  content: '';
   width: 0.65em;
   height: 0.65em;
   transform: scale(0);
@@ -155,7 +158,7 @@ input[type="checkbox"]::before {
   box-shadow: inset 1em 1em var(--color-background);
   background-color: --color-background;
 }
-input[type="checkbox"]:checked::before {
+input[type='checkbox']:checked::before {
   transform: scale(1);
 }
 </style>
