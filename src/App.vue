@@ -39,8 +39,8 @@ export default {
       navigator.clipboard.writeText(this.output)
     },
     acceptCookie: function () {
-      this.cookieAccepted = true;
-      localStorage.setItem('cookie-accepted', 'true');
+      this.cookieAccepted = true
+      localStorage.setItem('cookie-accepted', 'true')
     }
   }
 }
@@ -72,11 +72,18 @@ export default {
       >
     </p>
     <p>
-      Project 2023 - 2024 by <a href="https://wyremski.pl/en" title="Kamil Wyremski">Kamil Wyremski</a>. <a href="https://blog.wyremski.pl/polityka-prywatnosci/" title="Privacy Policy">Privacy Policy</a>
+      Project 2023 - 2024 by
+      <a href="https://wyremski.pl/en" title="Kamil Wyremski">Kamil Wyremski</a>.
+      <a href="https://blog.wyremski.pl/polityka-prywatnosci/" title="Privacy Policy"
+        >Privacy Policy</a
+      >
     </p>
   </main>
   <aside v-if="!cookieAccepted" class="cookie-alert">
-    This website uses cookies to help our website work better. <a href="https://blog.wyremski.pl/polityka-prywatnosci/" title="Privacy Policy">Privacy Policy</a>. <button @click="acceptCookie">I accept</button>
+    This website uses cookies to help our website work better.
+    <a href="https://blog.wyremski.pl/polityka-prywatnosci/" title="Privacy Policy"
+      >Privacy Policy</a
+    >. <button @click="acceptCookie">I accept</button>
   </aside>
 </template>
 
@@ -148,7 +155,7 @@ input[type='checkbox'] {
   margin: 0;
   font: inherit;
   color: currentColor;
-  width: 1.10em;
+  width: 1.1em;
   height: 1.15em;
   border: 0.15em solid currentColor;
   border-radius: 0.15em;
@@ -169,13 +176,13 @@ input[type='checkbox']::before {
 input[type='checkbox']:checked::before {
   transform: scale(1);
 }
-.cookie-alert{
+.cookie-alert {
   position: fixed;
   bottom: 0;
   right: 0;
   left: 0;
-  background-color: rgba(2,2,2,0.8);
-  text-align:center;
+  background-color: rgba(2, 2, 2, 0.8);
+  text-align: center;
   padding: 5px;
 }
 </style>
