@@ -5,7 +5,8 @@ export default {
     return {
       pTag: true,
       numberOfParagraphs: 1,
-      output: ''
+      output: '',
+      cookieAccepted: !!localStorage.getItem('cookie-accepted')
     }
   },
   mounted() {
@@ -36,6 +37,10 @@ export default {
     },
     copyToClipboard: function () {
       navigator.clipboard.writeText(this.output)
+    },
+    acceptCookie: function () {
+      this.cookieAccepted = true;
+      localStorage.setItem('cookie-accepted', 'true');
     }
   }
 }
@@ -67,9 +72,12 @@ export default {
       >
     </p>
     <p>
-      Project 2023 by <a href="https://wyremski.pl/en" title="Kamil Wyremski">Kamil Wyremski</a>
+      Project 2023 - 2024 by <a href="https://wyremski.pl/en" title="Kamil Wyremski">Kamil Wyremski</a>. <a href="https://blog.wyremski.pl/polityka-prywatnosci/" title="Privacy Policy">Privacy Policy</a>
     </p>
   </main>
+  <aside v-if="!cookieAccepted" class="cookie-alert">
+    This website uses cookies to help our website work better. <a href="https://blog.wyremski.pl/polityka-prywatnosci/" title="Privacy Policy">Privacy Policy</a>. <button @click="acceptCookie">I accept</button>
+  </aside>
 </template>
 
 <style scoped>
@@ -160,5 +168,14 @@ input[type='checkbox']::before {
 }
 input[type='checkbox']:checked::before {
   transform: scale(1);
+}
+.cookie-alert{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(2,2,2,0.8);
+  text-align:center;
+  padding: 5px;
 }
 </style>
